@@ -8,9 +8,3 @@ export default function json(data) {
     }, 500);
   });
 }
-
-read().then((response) => {
-  json(response).then((result) => {
-    console.log(result);
-  });
-});
