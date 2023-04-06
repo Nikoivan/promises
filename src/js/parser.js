@@ -1,5 +1,3 @@
-import read from "./reader";
-
 export default function json(data) {
   return new Promise((resolve) => {
     // эмуляция обработки ArrayBuffer
