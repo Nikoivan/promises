@@ -3,28 +3,16 @@ import json from './parser';
 import read from './reader';
 
 class GameSavingLoader {
-  constructor() {
-    this.read = read();
-  }
-
-  load() {
-    return this.read
+  static load() {
+    return read()
       .then((response) => json(response))
-      .catch((rejected) => {
+      .then((parseResponse) => new GameSaving(JSON.parse(parseResponse)));
+    /* .catch((rejected) => {
         console.error(rejected);
-      })
-      .then((parseResponse) => {
-        const result = JSON.parse(parseResponse);
-        const gameSavingResult = new GameSaving(result);
-        return gameSavingResult;
-      })
-      .catch((rejected) => {
-        console.error(rejected);
-      });
+      }); */
   }
 }
 
 export default GameSavingLoader;
 
-const test = new GameSavingLoader();
-console.log(test);
+console.log(GameSavingLoader.load());
